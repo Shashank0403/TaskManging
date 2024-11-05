@@ -3,60 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager App</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/utilities.css">
-    <script src="https://kit.fontawesome.com/749b88acba.js" crossorigin="anonymous"></script>
+    <title>Login - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .forgot-password {
+            margin-bottom: 15px;
+            text-align: right;
+            font-size: 0.9em;
+        }
+        .login-button {
+            width: 100%; /* Make the button full width */
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .login-button:hover {
+            background-color: #333; /* Darker shade on hover */
+        }
+        .social-login {
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .facebook-button { background-color: #3b5998; }
+        .google-button { background-color: #db4437; }
+        .apple-button { background-color: #000; }
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="mainContainer">
+        <header>
+            <h1>Daily Task Management</h1>
+        </header>
 
-        <div class="title">
-            <h2>Task Manager</h2>
+        <!-- Login Form -->
+        <form class="login-form" id="loginForm" onsubmit="return false;">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <a href="#" class="forgot-password" onclick="forgotPassword()">Forgot Password?</a>
+            <button type="button" class="login-button" onclick="handleLogin()">Login</button>
+        </form>
+
+        <!-- Social Login Options -->
+        <div class="social-login" id="socialLogin">
+            <p>Or login with:</p>
+            <button class="facebook-button" onclick="socialSignIn('facebook')">Facebook</button>
+            <button class="google-button" onclick="socialSignIn('google')">Google</button>
+            <button class="apple-button" onclick="socialSignIn('apple')">Apple</button>
         </div>
 
-        <p class="alert d-none">All inputs must be filled</p>
-
-        <div class="inputs">
-            <input type="text" id="taskName" class="task-name-input" placeholder="Write a task">
-            <input type="date" id="taskDueDate" class="task-due-date">
-            <select id="priority" class="priority-input">
-                <option value="" disabled selected>Priority</option>
-                <option value="High Priority">High Priority</option>
-                <option value="Low Priority">Low Priority</option>
-            </select>
-            <button class="btn add-tasks-btn" id="addTask">Add</button>
-        </div>
-
-        <div class="none-inputs d-none">
-            <div class="filter">
-                <div class="status-filter">
-                    <button class="btn" id="allTasks">All Tasks</button>
-                    <button class="btn" id="activeTasks">Active Tasks</button>
-                    <button class="btn" id="completedTasks">Completed Tasks</button>
-                </div>
-                <div class="sorting-filter">
-                    <button class="btn sort-btn" id="sortTasks">Sort by Priority</button>
-                    <button class="btn sort-btn" id="sortTasksByDate">Sort by Due Date</button>
-                </div>
-            </div>
-            <div class="tasks-list">
-                <table class="tasks" id="tasksListing" >
-                    <tr>
-                        <th class="column">Status</th>
-                        <th class="column">Tasks</th>
-                        <th class="column">Priority</th>
-                        <th class="column">Due Date</th>
-                        <th class="column">Actions</th>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <button class="btn clear-btn d-none">Clear All</button>
-
+        <footer>
+            <p>&copy; 2024 Daily Task Manager</p>
+        </footer>
     </div>
-    
-    <script src="js/script.js"></script>
+
+    <script>
+        function forgotPassword() {
+            alert('Password recovery options would be available here.');
+        }
+
+        function socialSignIn(platform) {
+            alert('Logged in with ' + platform);
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                // Here, you can redirect or handle the login
+                alert('Logging in...');
+                // Example redirect (uncomment below line)
+                window.location.href = "index.html";
+            } else {
+                alert('Please fill in both email and password fields.');
+            }
+        }
+    </script>
 </body>
 </html>
