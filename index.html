@@ -53,6 +53,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            text-decoration: none; /* Remove underline */
             text-align: center;
             display: inline-block;
             transition: background-color 0.3s;
@@ -97,7 +98,7 @@
             <label for="password">Password:</label>
             <input type="password" id="password" placeholder="Enter your password" required>
             <a href="#" class="forgot-password" onclick="forgotPassword()">Forgot Password?</a>
-            <button type="button" class="login-button" onclick="handleLogin()">Login</button>
+            <a href="pavan.html" class="btn btn-primary btn-xl rounded-pill mt-5 role="button" style="width: 280px; background-color: black; display: inline-block; text-align: center; padding: 10px; color: white; text-decoration: none;" >Login</a> <!-- Login button redirects to options.html -->
         </form>
 
         <!-- Social Login Options -->
@@ -107,6 +108,8 @@
             <button class="google-button" onclick="socialSignIn('google')">Google</button>
             <button class="apple-button" onclick="socialSignIn('apple')">Apple</button>
         </div>
+
+
 
         <footer>
             <p>&copy; 2024 Daily Task Manager</p>
@@ -120,19 +123,6 @@
 
         function socialSignIn(platform) {
             alert('Logged in with ' + platform);
-        }
-
-        function handleLogin() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            if (email && password) {
-                // Here, you can redirect or handle the login
-                // Example redirect (uncomment below line)
-                window.location.href = "pavan.html";
-            } else {
-                alert('Please fill in both email and password fields.');
-            }
         }
     </script>
 </body>
